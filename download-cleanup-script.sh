@@ -4,9 +4,9 @@
 # This script moves old files to exclusion_queue and deletes very old files
 
 # Configuration - Windows paths accessible from WSL
-DOWNLOADS_PATH="/mnt/c/Users/guilh/Downloads"
-EXCLUSION_QUEUE_PATH="/mnt/c/Users/guilh/Downloads/exclusion_queue"
-LOG_PATH="/mnt/c/Users/guilh/Downloads/cleanup_log.txt"
+DOWNLOADS_PATH="/mnt/c/Users/Guilherme/Downloads"
+EXCLUSION_QUEUE_PATH="/mnt/c/Users/Guilherme/Downloads/exclusion_queue"
+LOG_PATH="/mnt/c/Users/Guilherme/Downloads/cleanup_log.txt"
 
 # Check if Windows username is different from WSL username
 if [ ! -d "$DOWNLOADS_PATH" ]; then
