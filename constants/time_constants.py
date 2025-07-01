@@ -1,0 +1,3 @@
+HOURS_IN_ONE_DAY: int      = 24
+MINUTES_IN_ONE_HOUR: int   = 60
+SECONDS_IN_ONE_MINUTE: int = 60
