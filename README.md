@@ -35,8 +35,8 @@ A simple and customizable script to help you keep your folders clean by automati
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/guilhermelcosta/download-cleanup-script.git
-cd download-cleanup-script
+git clone https://github.com/guilhermelcosta/folder-cleanup-script.git
+cd folder-cleanup-script
 ```
 
 ---
@@ -98,19 +98,19 @@ crontab -e
 ### Option A: Run Once at Startup
 
 ```cron
-@reboot /usr/bin/python3 /home/your_user/download-cleanup-script/cleanup_script.py
+@reboot /usr/bin/python3 /home/your_user/folder-cleanup-script/cleanup_script.py
 ```
 
 ### Option B: Run Daily at 8 AM
 
 ```cron
-0 8 * * * /usr/bin/python3 /home/your_user/download-cleanup-script/cleanup_script.py
+0 8 * * * /usr/bin/python3 /home/your_user/folder-cleanup-script/cleanup_script.py
 ```
 
 ### Option C: Run Every Hour
 
 ```cron
-0 * * * * /usr/bin/python3 /home/your_user/download-cleanup-script/cleanup_script.py
+0 * * * * /usr/bin/python3 /home/your_user/folder-cleanup-script/cleanup_script.py
 ```
 
 You can customize the timing using [cron syntax](https://crontab.guru/).
