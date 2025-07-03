@@ -1,0 +1,8 @@
+{
+    "move_delay": 30,
+    "exclusion_delay": 60,
+    "should_move_folder": true,
+    "cleanup_folder_name": "Downloads",
+    "exclusion_folder_name": "exclusion_queue",
+    "cleanup_log_name": "cleanup_log.txt"
+}
