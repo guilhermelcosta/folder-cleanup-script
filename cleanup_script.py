@@ -21,8 +21,8 @@ def main() -> None:
 
     write_log(f"=== Starting Cleanup Process: {datetime.now().strftime('%Y-%m-%d')} ===")
 
-    moved_count = move_files(settings)
-    deleted_count = delete_files(settings)
+    moved_count: int = move_files(settings)
+    deleted_count: int = delete_files(settings)
 
     write_log(f"Moved {moved_count} files to {settings.exclusion_folder_name}")
     write_log(f"Deleted {deleted_count} files/folders from {settings.exclusion_folder_name}")

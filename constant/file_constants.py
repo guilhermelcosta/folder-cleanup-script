@@ -5,7 +5,7 @@ APPEND_COMMAND: str = "a"
 WRITE_COMMAND: str = "w"
 STANDARD_ENCODING: str = "utf-8"
 CLEANUP_SETTINGS_FILE: str = "cleanup_settings.json"
-DEFAULT_SETTINGS: dict = {
+DEFAULT_SETTINGS: dict[str, int | str | bool] = {
     "move_delay": 30,
     "exclusion_delay": 60,
     "should_move_folder": False,

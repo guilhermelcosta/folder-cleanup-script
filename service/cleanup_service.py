@@ -28,7 +28,7 @@ def move_files(settings: Settings) -> int:
     """
     moved_count = 0
     now = time.time()
-    move_delay = _convert_days_to_seconds(settings.move_delay)
+    move_delay = _convert_days_to_seconds(int(settings.move_delay))
 
     for filename in os.listdir(settings.cleanup_folder_path):
         file_path = os.path.join(settings.cleanup_folder_path, filename)
@@ -72,7 +72,7 @@ def delete_files(settings: Settings) -> int:
     Also logs the total number of files deleted and marks the completion of the cleanup process.
     """
     deleted_count = 0
-    exclusion_delay = _convert_days_to_seconds(settings.exclusion_delay)
+    exclusion_delay = _convert_days_to_seconds(int(settings.exclusion_delay))
     now = time.time()
 
     for filename in os.listdir(settings.exclusion_queue_path):

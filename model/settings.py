@@ -17,20 +17,20 @@ from constant.schedule_constants import DEFAULT_EXCLUSION_DELAY, DEFAULT_MOVE_DE
 class Settings:
     """Holds configuration for cleanup and exclusion folders, file names, and log paths."""
 
-    def __init__(self, object: dict[str, str]) -> None:
+    def __init__(self, object: dict[str, int | str | bool]) -> None:
         """Initialize Settings with default folder and file names/paths."""
-        self.move_delay = object.get("move_delay", DEFAULT_MOVE_DELAY)
-        self.exclusion_delay = object.get("exclusion_delay", DEFAULT_EXCLUSION_DELAY)
-        self.should_move_folder = object.get("should_move_folder", False)
-        self.cleanup_folder_name = object.get("cleanup_folder_name", DEFAULT_CLEANUP_FOLDER_NAME)
-        self.exclusion_folder_name = object.get("exclusion_folder_name", DEFAULT_EXCLUSION_FOLDER_NAME)
-        self.cleanup_log_name = object.get("cleanup_log_name", DEFAULT_CLEANUP_LOG_NAME)
-        self.cleanup_folder_path = object.get(
+        self.move_delay = int(object.get("move_delay", DEFAULT_MOVE_DELAY))
+        self.exclusion_delay = int(object.get("exclusion_delay", DEFAULT_EXCLUSION_DELAY))
+        self.should_move_folder = bool(object.get("should_move_folder", False))
+        self.cleanup_folder_name = str(object.get("cleanup_folder_name", DEFAULT_CLEANUP_FOLDER_NAME))
+        self.exclusion_folder_name = str(object.get("exclusion_folder_name", DEFAULT_EXCLUSION_FOLDER_NAME))
+        self.cleanup_log_name = str(object.get("cleanup_log_name", DEFAULT_CLEANUP_LOG_NAME))
+        self.cleanup_folder_path = str(object.get(
             "cleanup_folder_path", os.path.expanduser(f"~/{self.cleanup_folder_name}")
-        )
-        self.exclusion_queue_path = object.get(
+        ))
+        self.exclusion_queue_path = str(object.get(
             "exclusion_queue_path", os.path.join(self.cleanup_folder_path, self.exclusion_folder_name)
-        )
-        self.cleanup_log_path = object.get(
+        ))
+        self.cleanup_log_path = str(object.get(
             "cleanup_log_path", os.path.join(self.exclusion_queue_path, self.cleanup_log_name)
-        )
+        ))
