@@ -14,16 +14,17 @@ from service.logger_service import write_log
 
 
 def move_files(settings: Settings) -> int:
-    """Move files older than X days from the specified directory to the exclusion queue directory.
+    """Move files older than X days from the cleanup folder to the exclusion queue.
 
-    This function scans the specified directory for files (excluding subdirectories),
-    and for each file that has not been accessed in the last X days, moves it to the
-    exclusion queue directory. If a file with the same name already exists in the
-    destination, a numeric suffix is appended to the filename to avoid overwriting.
-    Logs are written for each moved file and for any errors encountered during the move process.
+    Scans the cleanup folder for files and (optionally) folders. For each item that has not been accessed
+    in the last X days, moves it to the exclusion queue directory. If a name conflict occurs in the
+    destination, appends a numeric suffix to the filename to avoid overwriting. Logs each move and any errors.
+
+    Args:
+        settings (Settings): The configuration settings for the cleanup operation.
 
     Returns:
-        None
+        int: The number of files or folders moved.
 
     """
     moved_count = 0
@@ -65,11 +66,18 @@ def move_files(settings: Settings) -> int:
 
 
 def delete_files(settings: Settings) -> int:
-    """Delete files older than X days from the exclusion queue directory.
+    """Delete files or folders older than X days from the exclusion queue directory.
 
-    Iterates through all files in the exclusion queue directory, checks their last access time,
-    and deletes those that have not been accessed in the last X days. Logs each deletion and any errors encountered.
-    Also logs the total number of files deleted and marks the completion of the cleanup process.
+    Scans the exclusion queue directory for files and (optionally) folders. For each item that has not been accessed
+    in the last X days, deletes it. Logs each deletion and any errors encountered. Skips folders if configured not to move folders,
+    and skips the cleanup log file. Logs the total number of files or folders deleted and marks the completion of the cleanup process.
+
+    Args:
+        settings (Settings): The configuration settings for the cleanup operation.
+
+    Returns:
+        int: The number of files or folders deleted.
+
     """
     deleted_count = 0
     exclusion_delay = _convert_days_to_seconds(int(settings.exclusion_delay))

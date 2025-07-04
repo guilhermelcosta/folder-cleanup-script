@@ -14,6 +14,10 @@ from service.logger_service import write_log
 from service.settings_service import get_settings
 
 
+# todo: add anacron tab
+# todo: add windows support
+# todo: fill 'about' section
+
 def main() -> None:
     """Run the main cleanup process by moving and deleting old files."""
     settings = get_settings()
