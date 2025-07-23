@@ -1,8 +1,19 @@
-{
-    "move_delay": 30,
-    "exclusion_delay": 60,
-    "should_move_folder": true,
-    "cleanup_folder_name": "Downloads",
-    "exclusion_folder_name": "exclusion_queue",
-    "cleanup_log_name": "cleanup_log.txt"
-}
+[
+    {
+        "cleanup_folder_path": "/home/guilherme/Downloads/",
+        "move_delay": 30,
+        "exclusion_delay": 60,
+        "should_move_folder": true,
+        "exclusion_folder_name": "exclusion_queue",
+        "cleanup_log_name": "downloads_cleanup_log.txt",
+        "unmatched_file_action": "delete",
+        "organization_rules": [
+            {
+                "priority": 3,
+                "type": "extension",
+                "pattern": ".jpg|.png|.gif|.jpeg",
+                "destination": "/home/guilherme/Pictures"
+            }
+        ]
+    }
+]
