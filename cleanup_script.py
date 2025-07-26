@@ -8,10 +8,6 @@ from services.logger_service import write_log
 from services.settings_service import get_cleanup_jobs
 
 
-# todo: add anacron tab
-# todo: add windows support
-# todo: fill 'about' section
-
 def main() -> None:
     """Run the main cleanup process for all configured jobs."""
     cleanup_jobs: list[CleanupJob] = get_cleanup_jobs()
