@@ -3,6 +3,7 @@ from typing import Any, Final
 
 from enums.organization_type_enum import OrganizationTypeEnum
 from enums.unmatched_file_action_enum import UnmatchedFileActionEnum
+from pathlib import Path
 
 # attribute settings
 CLEANUP_FOLDER_PATH: Final[str] = "cleanup_folder_path"
@@ -23,9 +24,9 @@ DEFAULT_EXCLUSION_FOLDER_NAME: Final[str] = "exclusion_queue"
 DEFAULT_CLEANUP_LOG_NAME: Final[str] = "cleanup_log.txt"
 DEFAULT_MOVE_DELAY: Final[int] = 30
 DEFAULT_EXCLUSION_DELAY: Final[int] = 60
-DEFAULT_CLEANUP_SETTINGS_FILE: Final[str] = "cleanup_settings.json"
+DEFAULT_CLEANUP_SETTINGS_FILE: Final[str] = str(Path(__file__).parent.parent / "cleanup_settings.json")
 DEFAULT_SETTINGS: dict[str, Any] = {
-    CLEANUP_FOLDER_PATH: "/path/to/your/downloads",
+    CLEANUP_FOLDER_PATH: str(Path.home() / "Downloads"),
     MOVE_DELAY: DEFAULT_MOVE_DELAY,
     EXCLUSION_DELAY: DEFAULT_EXCLUSION_DELAY,
     SHOULD_MOVE_FOLDER: False,
@@ -37,7 +38,7 @@ DEFAULT_SETTINGS: dict[str, Any] = {
             PRIORITY: 1,
             TYPE: OrganizationTypeEnum.EXTENSION.value,
             PATTERN: ".pdf",
-            DESTINATION: "/path/to/your/documents/pdfs",
+            DESTINATION: str(Path.home() / "Documents" / "pdfs"),
         }
     ],
 }
