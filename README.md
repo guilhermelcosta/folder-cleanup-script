@@ -5,15 +5,18 @@ A simple and customizable script to help you keep your folders clean by automati
 ---
 
 ## Features
+## Features
 
 * **Automatically moves files** older than a specified number of days to an exclusion queue
 * **Deletes files** from the exclusion queue after another specified period
 * Fully **configurable via a JSON settings file**
 * **Logs all actions** performed (moves, deletions, errors)
 * Easy to use and automate with `cron`
+* **Customizable organization rules**: Move files based on extensions, patterns, or other criteria.
 
 ---
 
+## How It Works
 ## How It Works
 
 1. **Move Phase**
@@ -47,28 +50,46 @@ Edit or create the `cleanup_settings.json` file in the project directory with yo
 
 ```json
 {
-  "move_delay": 30,
-  "exclusion_delay": 60,
-  "should_move_folder": true,
-  "cleanup_folder_name": "Downloads",
-  "exclusion_folder_name": "exclusion_queue",
-  "cleanup_log_name": "cleanup_log.txt",
-  "cleanup_folder_path": "/home/your_user/Downloads",
-  "exclusion_folder_path": "/home/your_user/Downloads/exclusion_queue",
-  "cleanup_log_path": "/home/your_user/Downloads/exclusion_queue/cleanup_log.txt"
+  "settings": {
+    "move_delay": 30,
+    "exclusion_delay": 60,
+    "should_move_folder": true,
+    "cleanup_folder_name": "Downloads",
+    "exclusion_folder_name": "exclusion_queue",
+    "cleanup_log_name": "cleanup_log.txt",
+    "cleanup_folder_path": "/home/your_user/Downloads",
+    "exclusion_folder_path": "/home/your_user/Downloads/exclusion_queue",
+    "cleanup_log_path": "/home/your_user/Downloads/exclusion_queue/cleanup_log.txt",
+    "unmatched_file_action": "keep"
+  },
+  "organization_rules": [
+    {
+      "priority": 1,
+      "type": "extension",
+      "pattern": ".jpeg|.png",
+      "destination": "/path/to/your/documents/images"
+    },
+    {
+      "priority": 2,
+      "type": "regex",
+      "pattern": "college",
+      "destination": "/path/to/your/documents/college"
+    }
+  ]
 }
 ```
 
-If this file is missing or partially filled, the script will use **default values**:
+If this file is missing or partially filled, the script will use **default values** defined in `constants.py`:
 
-| Setting                 | Default              |
-| ----------------------- | -------------------- |
-| `move_delay`            | 30 days              |
-| `exclusion_delay`       | 60 days              |
-| `should_move_folder`    | `false` (only files) |
-| `cleanup_folder_name`   | `"Downloads"`        |
-| `exclusion_folder_name` | `"exclusion_queue"`  |
-| `cleanup_log_name`      | `"cleanup_log.txt"`  |
+| Setting                 | Default                |
+| ----------------------- | ---------------------- |
+| `move_delay`            | 30 days                |
+| `exclusion_delay`       | 60 days                |
+| `should_move_folder`    | `false` (only files)   |
+| `cleanup_folder_name`   | `"Downloads"`          |
+| `exclusion_folder_name` | `"exclusion_queue"`    |
+| `cleanup_log_name`      | `"cleanup_log.txt"`    |
+| `unmatched_file_action` | `"keep"` or `"delete"` |
 
 ---
 
@@ -85,6 +106,7 @@ python3 cleanup_script.py
 ```
 ---
 
+## Automating with Crontab
 ## Automating with Crontab
 
 To run the script automatically, you can use `cron`, a built-in Linux scheduler.
@@ -115,7 +137,7 @@ crontab -e
 
 You can customize the timing using [cron syntax](https://crontab.guru/).
 
-> 💡 Tip: To ensure the script actually runs, you can redirect its output to a log file:
+> 💡 Tip: To ensure the script is actually running, you can redirect its output to a log file:
 >
 > ```cron
 > @reboot /usr/bin/python3 /path/to/cleanup_script.py >> /path/to/cron_log.txt 2>&1
@@ -123,6 +145,7 @@ You can customize the timing using [cron syntax](https://crontab.guru/).
 
 ---
 
+## Configuration Options Explained
 ## Configuration Options Explained
 
 | Key                     | Description                                                         |
@@ -136,6 +159,7 @@ You can customize the timing using [cron syntax](https://crontab.guru/).
 
 ---
 
+## Testing & Debugging
 ## Testing & Debugging
 
 To manually test or debug the script, simply run:
@@ -155,13 +179,16 @@ Make sure you have the correct paths and permissions for the folders involved.
 ---
 
 ## Requirements
+## Requirements
 
 * Python **3.6 or later**
 
 ---
 
 ## Contributing
+## Contributing
 
 Contributions are welcome!
+
 
 Feel free to fork the repository, open issues, or submit pull requests with improvements.
