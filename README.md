@@ -5,6 +5,7 @@ A simple and customizable script to help you keep your folders clean by automati
 ---
 
 ## Features
+## Features
 
 * **Automatically moves files** older than a specified number of days to an exclusion queue
 * **Deletes files** from the exclusion queue after another specified period
@@ -15,6 +16,7 @@ A simple and customizable script to help you keep your folders clean by automati
 
 ---
 
+## How It Works
 ## How It Works
 
 1. **Move Phase**
@@ -105,6 +107,7 @@ python3 cleanup_script.py
 ---
 
 ## Automating with Crontab
+## Automating with Crontab
 
 To run the script automatically, you can use `cron`, a built-in Linux scheduler.
 
@@ -143,6 +146,7 @@ You can customize the timing using [cron syntax](https://crontab.guru/).
 ---
 
 ## Configuration Options Explained
+## Configuration Options Explained
 
 | Key                     | Description                                                         |
 | ----------------------- | ------------------------------------------------------------------- |
@@ -155,6 +159,7 @@ You can customize the timing using [cron syntax](https://crontab.guru/).
 
 ---
 
+## Testing & Debugging
 ## Testing & Debugging
 
 To manually test or debug the script, simply run:
@@ -174,13 +179,16 @@ Make sure you have the correct paths and permissions for the folders involved.
 ---
 
 ## Requirements
+## Requirements
 
 * Python **3.6 or later**
 
 ---
 
 ## Contributing
+## Contributing
 
 Contributions are welcome!
+
 
 Feel free to fork the repository, open issues, or submit pull requests with improvements.
