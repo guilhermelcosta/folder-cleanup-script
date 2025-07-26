@@ -20,7 +20,7 @@ PATTERN: Final[str] = "pattern"
 DESTINATION: Final[str] = "destination"
 
 # default values
-DEFAULT_EXCLUSION_FOLDER_NAME: Final[str] = "exclusion_queue"
+DEFAULT_EXCLUSION_FOLDER_NAME: Final[str] = ".exclusion_queue"
 DEFAULT_CLEANUP_LOG_NAME: Final[str] = "cleanup_log.txt"
 DEFAULT_MOVE_DELAY: Final[int] = 30
 DEFAULT_EXCLUSION_DELAY: Final[int] = 60
